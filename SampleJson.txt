@@ -1,0 +1,63 @@
+Book.json
+{
+  "author": "Author 1",
+  "bookTypeId": 9,
+  "description": "Book Description",
+  "isbn": "ISBN-1",
+  "name": "Book 1",
+  "price": 100
+}
+
+{
+  "author": "Author 2",
+  "bookTypeId": 9,
+  "description": "Book Description 2",
+  "isbn": "ISBN-2",
+  "name": "Book 2",
+  "price": 150
+}
+
+{
+  "author": "Author 3",
+  "bookTypeId": 10,
+  "description": "Book Description 3",
+  "isbn": "ISBN-3",
+  "name": "Book 3",
+  "price": 140
+}
+
+{
+  "author": "Author 4",
+  "bookTypeId": 10,
+  "description": "Book Description 4",
+  "isbn": "ISBN-4",
+  "name": "Book 4",
+  "price": 200
+}
+
+
+Promotion.json
+{
+  "description": "Test Promo",
+  "name": "Test Promo",
+  "promoCode": "T-PROMO",
+}
+
+Discount.json
+{
+  "bookTypeId": 9,
+  "discountPercentage": 10,
+  "promoId": 1
+}
+
+{
+  "bookTypeId": 10,
+  "discountPercentage": 0,
+  "promoId": 1
+}
+
+checkout.json
+{
+  "bookIDs": [4, 5, 6, 7],
+  "promoCode": "T-PROMO"
+}

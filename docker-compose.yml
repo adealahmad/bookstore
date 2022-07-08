@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bookstore
+      POSTGRES_PASSWORD: admin123
+    ports:
+        - 3306:3306
+    volumes:
+        - ./data/mysql:/var/lib/mysql
+
+  bookstore:
+    image: bookstore:latest
+    restart: always
+    environment:
+      DB_HOST: mysql
+      DB_NAME: bookstore
+      DB_USERNAME: root
+      DB_PASSWORD: root
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+        - 8081:8080
