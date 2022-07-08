@@ -1,8 +1,10 @@
 # Bookstore
 A Spring-Boot based REST API with the following functions:  
 •&nbsp;CRUD operations on Book entity  
-•&nbsp;Checkout operation for single or multiple books which will return the total payable amount after calculating discount.  
+•&nbsp;Checkout operation for single or multiple books returning the total payable amount after calculating discount.  
 
+# ERD
+![bookstore ERD](https://github.com/adealahmad/bookstore/blob/main/ERD.png?raw=true)
 
 # Execute Unit Tests
 :\bookstore> mvn clean test
