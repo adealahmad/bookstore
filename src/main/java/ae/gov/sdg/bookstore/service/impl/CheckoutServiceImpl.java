@@ -57,8 +57,7 @@ public class CheckoutServiceImpl implements CheckoutService {
 				throw new BookNotFoundException(bookId);
 			}
 		}
-		shoppingCartDTO.setTotalPayable(totalPayable);
-		return shoppingCartDTO.getTotalPayable();
+		return totalPayable;
 	}
 
 	/**
