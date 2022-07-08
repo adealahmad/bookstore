@@ -16,16 +16,16 @@ A Spring-Boot based REST API with the following functions:
 :\bookstore> java -jar target/bookstore-0.0.1.jar
 
 # Build Docker Image
-:\bookstore> docker build -t bookstore .
-or
+:\bookstore> docker build -t bookstore .  
+or  
 :\bookstore> mvn compile jib:build
 
-#Run MySQL Database Container
+# Run MySQL Database Container
 :\bookstore> docker run -d --name mysql -p 3306:3306 -v $pwd/data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=bookstore mysql:latest
 
 # Run BookStore Docker Container
-:\bookstore> docker run -d --name bookstore -p 8080:8080 -e DB_HOST=host.docker.internal -e DB_NAME=bookstore -e DB_USERNAME=root -e DB_PASSWORD=root -t bookstore:latest
-or
+:\bookstore> docker run -d --name bookstore -p 8080:8080 -e DB_HOST=host.docker.internal -e DB_NAME=bookstore -e DB_USERNAME=root -e DB_PASSWORD=root -t bookstore:latest  
+or  
 :\bookstore> docker run -d --name bookstore -p 8080:8080 -e DB_HOST=host.docker.internal -e DB_NAME=bookstore -e DB_USERNAME=root -e DB_PASSWORD=root  registry.hub.docker.com/adeelrana/bookstore:latest
 
 # Run Docker Compose with MySql and BookStore Services
