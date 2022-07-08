@@ -51,11 +51,11 @@ class CheckoutServiceTest {
         		Mockito.anyLong(), Mockito.anyString());
         
         ArrayList<Long> bookIDs = new ArrayList<Long>(Arrays. asList(1l));
-		ShoppingCartDTO cartDTO = checkoutService.checkout(
-				new ShoppingCartDTO(bookIDs, "PROMO1", 0.0d));
+		Double totalPayable = checkoutService.checkout(
+				new ShoppingCartDTO(bookIDs, "PROMO1"));
 
-		Assertions.assertNotNull(cartDTO, "ShoppingCartVO should not be NULL");
-		Assertions.assertTrue(cartDTO.getTotalPayable() == 75.0d, "Total Payable is correct");
+		Assertions.assertNotNull(totalPayable, "result should not be NULL");
+		Assertions.assertTrue(totalPayable == 75.0d, "Total Payable is correct");
 	}
 
 	/**
@@ -68,7 +68,7 @@ class CheckoutServiceTest {
         ArrayList<Long> bookIDs = new ArrayList<Long>(Arrays. asList(1l));
 
 	    RuntimeException rtException = Assertions.assertThrows(BookNotFoundException.class, () -> {
-			checkoutService.checkout(new ShoppingCartDTO(bookIDs, "PROMO1", 0.0d));
+			checkoutService.checkout(new ShoppingCartDTO(bookIDs, "PROMO1"));
 	    });
 	    
 	    Assertions.assertEquals("Book [id=1] not found.", rtException.getMessage());

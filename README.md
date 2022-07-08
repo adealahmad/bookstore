@@ -3,9 +3,6 @@ A Spring-Boot based REST API with the following functions:
 •&nbsp;CRUD operations on Book entity  
 •&nbsp;Checkout operation for single or multiple books which will return the total payable amount after calculating discount.  
 
-# ERD
-
-
 
 # Execute Unit Tests
 :\bookstore> mvn clean test

@@ -2,6 +2,7 @@ package ae.gov.sdg.bookstore.controller;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.mockito.ArgumentMatchers.anyDouble;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -54,8 +55,8 @@ class CheckoutControllerTest {
 	@Test
 	void testCheckoutCart() throws Exception {
 		ArrayList<Long> bookIDs = new ArrayList<Long>(Arrays. asList(1l, 2l, 3l));
-		ShoppingCartDTO cartVO = new ShoppingCartDTO(bookIDs, "PROMO1", 0.0d);
-	    Mockito.when(checkoutService.checkout(Mockito.any())).thenReturn(cartVO);
+		ShoppingCartDTO cartVO = new ShoppingCartDTO(bookIDs, "PROMO1");
+	    Mockito.when(checkoutService.checkout(Mockito.any())).thenReturn(anyDouble());
 
 	    MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/checkout/")
 	            .contentType(MediaType.APPLICATION_JSON)
@@ -64,8 +65,7 @@ class CheckoutControllerTest {
 
 	    mockMvc.perform(mockRequest)
 	            .andExpect(status().isAccepted())
-		        .andExpect(jsonPath("$", notNullValue()))
-	            .andExpect(jsonPath("$.promoCode", is("PROMO1")));
+		        .andExpect(jsonPath("$", notNullValue()));
 	}
 
 }
