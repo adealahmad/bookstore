@@ -65,7 +65,7 @@ class BookTypeControllerTest {
 	@Test
 	void testFindAllBookTypes() throws Exception {
 	    mockMvc.perform(MockMvcRequestBuilders
-	            .get("/bookTypes/")
+	            .get("/book-types/")
 	            .contentType(MediaType.APPLICATION_JSON))
 	            .andExpect(status().isOk())
 	            .andExpect(jsonPath("$", hasSize(2)))
