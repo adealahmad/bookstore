@@ -13,6 +13,8 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.TestPropertySource;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import ae.gov.sdg.bookstore.domain.Book;
 import ae.gov.sdg.bookstore.domain.BookType;
@@ -23,10 +25,12 @@ import ae.gov.sdg.bookstore.repository.BookTypeRepository;
 
 /**
  * The Class BookServiceTest.
- * 
+ *
  * @author Adeel.Ahmad
  */
+@Testcontainers
 @SpringBootTest
+@TestPropertySource(locations = "classpath:application-test.properties")
 class BookServiceTest {
 
 	/** The book service. */

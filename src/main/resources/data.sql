@@ -1,16 +1,16 @@
 INSERT INTO hibernate_sequence (next_val) VALUES (4);
 
 
-INSERT INTO BOOK_TYPES VALUES(1, "Literature", "LITBOOK");
-INSERT INTO BOOK_TYPES VALUES(2, "Nonfiction", "NFBOOK");
-INSERT INTO BOOK_TYPES VALUES(3, "Action", "ACBOOK");
-INSERT INTO BOOK_TYPES VALUES(4, "Thriller", "THBOOK");
-INSERT INTO BOOK_TYPES VALUES(5, "Drama", "ESBOOK");
-INSERT INTO BOOK_TYPES VALUES(6, "Poetry", "ALBOOK");
-INSERT INTO BOOK_TYPES VALUES(7, "Media", "MEBOOK");
-INSERT INTO BOOK_TYPES VALUES(8, "Others", "OTBOOK");
-INSERT INTO BOOK_TYPES VALUES(9, "fiction", "FICBOOK");
-INSERT INTO BOOK_TYPES VALUES(10, "Comic", "COBOOK");
+INSERT INTO book_types VALUES(1, "Literature", "LITBOOK");
+INSERT INTO book_types VALUES(2, "Nonfiction", "NFBOOK");
+INSERT INTO book_types VALUES(3, "Action", "ACBOOK");
+INSERT INTO book_types VALUES(4, "Thriller", "THBOOK");
+INSERT INTO book_types VALUES(5, "Drama", "ESBOOK");
+INSERT INTO book_types VALUES(6, "Poetry", "ALBOOK");
+INSERT INTO book_types VALUES(7, "Media", "MEBOOK");
+INSERT INTO book_types VALUES(8, "Others", "OTBOOK");
+INSERT INTO book_types VALUES(9, "fiction", "FICBOOK");
+INSERT INTO book_types VALUES(10, "Comic", "COBOOK");
 
 INSERT INTO promotions (promo_id, description, name, promo_code) VALUES(1, 'Test Promo 1', 'Test Promo 1', 'T-PROMO');
 

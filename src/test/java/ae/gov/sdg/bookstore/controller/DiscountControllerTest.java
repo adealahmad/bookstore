@@ -27,7 +27,7 @@ import ae.gov.sdg.bookstore.service.DiscountService;
 
 /**
  * The Class DiscountControllerTest.
- * 
+ *
  * @author Adeel.Ahmad
  */
 @WebMvcTest(DiscountController.class)
@@ -56,9 +56,9 @@ class DiscountControllerTest {
 		DiscountDTO discount1 = new DiscountDTO(1l, 25, 1L, 1L);
 		DiscountDTO discount2 = new DiscountDTO(2l, 25, 2L, 2L);
 		List<DiscountDTO> discounts = Arrays.asList(discount1, discount2);
-		
+
 		Mockito.when(discountService.getAllDiscounts()).thenReturn(discounts);
-		
+
 	    mockMvc.perform(MockMvcRequestBuilders
 	            .get("/discounts/")
 	            .contentType(MediaType.APPLICATION_JSON))

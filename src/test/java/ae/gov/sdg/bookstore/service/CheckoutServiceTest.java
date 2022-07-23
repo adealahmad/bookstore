@@ -11,6 +11,8 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.TestPropertySource;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import ae.gov.sdg.bookstore.dto.BookDTO;
 import ae.gov.sdg.bookstore.dto.DiscountDTO;
@@ -20,12 +22,15 @@ import ae.gov.sdg.bookstore.exception.BookNotFoundException;
 
 /**
  * The Class CheckoutServiceTest.
- * 
+ *
  * @author Adeel.Ahmad
  */
+
+@Testcontainers
 @SpringBootTest
+@TestPropertySource(locations = "classpath:application-test.properties")
 class CheckoutServiceTest {
-	
+
 	/** The checkout service. */
 	@Autowired
 	private CheckoutService checkoutService;
@@ -33,7 +38,7 @@ class CheckoutServiceTest {
     /** The book service. */
     @MockBean
 	private BookService bookService;
-	
+
     /** The discount service. */
     @MockBean
 	private DiscountService discountService;
@@ -49,7 +54,7 @@ class CheckoutServiceTest {
         DiscountDTO discount1 = new DiscountDTO(1l, 25, 1L, 1L);
         doReturn(discount1).when(discountService).getDiscountByBookTypeAndPromoCode(
         		Mockito.anyLong(), Mockito.anyString());
-        
+
         ArrayList<Long> bookIDs = new ArrayList<Long>(Arrays. asList(1l));
 		Double totalPayable = checkoutService.checkout(
 				new ShoppingCartDTO(bookIDs, "PROMO1"));
@@ -70,7 +75,7 @@ class CheckoutServiceTest {
 	    RuntimeException rtException = Assertions.assertThrows(BookNotFoundException.class, () -> {
 			checkoutService.checkout(new ShoppingCartDTO(bookIDs, "PROMO1"));
 	    });
-	    
+
 	    Assertions.assertEquals("Book [id=1] not found.", rtException.getMessage());
 	}
 }

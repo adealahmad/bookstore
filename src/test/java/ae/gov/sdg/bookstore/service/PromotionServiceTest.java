@@ -12,6 +12,8 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.TestPropertySource;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import ae.gov.sdg.bookstore.domain.Promotion;
 import ae.gov.sdg.bookstore.dto.PromotionDTO;
@@ -20,16 +22,19 @@ import ae.gov.sdg.bookstore.repository.PromotionRepository;
 
 /**
  * The Class PromotionServiceTest.
- * 
+ *
  * @author Adeel.Ahmad
  */
+
+@Testcontainers
 @SpringBootTest
-class PromotionServiceTest {
-	
+@TestPropertySource(locations = "classpath:application-test.properties")
+class PromotionServiceTest  {
+
 	/** The promotion service. */
 	@Autowired
 	private PromotionService promotionService;
-	
+
 	/** The promotion repository. */
 	@MockBean
 	private PromotionRepository promotionRepository;
@@ -44,9 +49,9 @@ class PromotionServiceTest {
 		List<Promotion> discounts = new ArrayList<Promotion>(Arrays.asList(promotion1, promotion2));
 
 		doReturn(discounts).when(promotionRepository).findAll();
-		
+
 		List<PromotionDTO> PromotionDTOs = promotionService.findAllPromotions();
-		
+
 		Assertions.assertNotNull(PromotionDTOs, "Promotions should not be NULL");
 		Assertions.assertTrue(!PromotionDTOs.isEmpty(), "Promotions should not be Empty");
 		Assertions.assertTrue(PromotionDTOs.size()==2, "Promotions size not correct");
@@ -59,9 +64,9 @@ class PromotionServiceTest {
 	void testGetPromotionByCode() {
 		Promotion promotion1 = new Promotion(1l, "Promo1", "Promo1", "Promo1");
 		doReturn(promotion1).when(promotionRepository).findByPromoCodeIgnoreCase(Mockito.anyString());
-		
+
 		PromotionDTO returnedPromo = promotionService.getPromotionByCode(Mockito.anyString());
-		
+
 		Assertions.assertNotNull(returnedPromo, "Promotion should not be NULL");
 		Assertions.assertTrue(returnedPromo.getPromoCode().equals("Promo1"), "Promotion is not correct");
 	}
@@ -73,10 +78,10 @@ class PromotionServiceTest {
 	void testCreatePromotion() {
 		Promotion promotion1 = new Promotion(1l, "Promo1", "Promo1", "Promo1");
 		doReturn(promotion1).when(promotionRepository).save(Mockito.any());
-		
+
 		PromotionDTO returnedPromo = promotionService.savePromotion(
 				new PromotionDTO(1l, "Promo1", "Promo1", "Promo1"));
-		
+
 		Assertions.assertNotNull(returnedPromo, "Discount should not be NULL");
 	}
 

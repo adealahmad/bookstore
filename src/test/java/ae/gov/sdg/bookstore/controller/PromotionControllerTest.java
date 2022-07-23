@@ -27,17 +27,17 @@ import ae.gov.sdg.bookstore.service.PromotionService;
 
 /**
  * The Class PromotionControllerTest.
- * 
+ *
  * @author Adeel.Ahmad
  */
 @WebMvcTest(PromotionController.class)
 @TestPropertySource(locations = "classpath:application-test.properties")
 class PromotionControllerTest {
-	
+
     /** The mock mvc. */
     @Autowired
     private MockMvc mockMvc;
-    
+
     /** The mapper. */
     @Autowired
     private ObjectMapper mapper;
@@ -56,9 +56,9 @@ class PromotionControllerTest {
 		PromotionDTO promotion1 = new PromotionDTO(1l, "Promo1", "Promo1", "Promo1");
 		PromotionDTO promotion2 = new PromotionDTO(2l, "Promo2", "Promo2", "Promo2");
 		List<PromotionDTO> promotions = Arrays.asList(promotion1, promotion2);
-		
+
 		Mockito.when(promotionService.findAllPromotions()).thenReturn(promotions);
-		
+
 	    mockMvc.perform(MockMvcRequestBuilders
 	            .get("/promotions/")
 	            .contentType(MediaType.APPLICATION_JSON))
@@ -74,9 +74,9 @@ class PromotionControllerTest {
 	@Test
 	void testFindAllPromotions_IsEmpty() throws Exception {
 		List<PromotionDTO> promotions = new ArrayList<PromotionDTO>();
-		
+
 		Mockito.when(promotionService.findAllPromotions()).thenReturn(promotions);
-		
+
 	    mockMvc.perform(MockMvcRequestBuilders
 	            .get("/promotions/")
 	            .contentType(MediaType.APPLICATION_JSON))
@@ -104,7 +104,7 @@ class PromotionControllerTest {
 	    mockMvc.perform(mockRequest)
 	            .andExpect(status().isCreated());
 	}
-	
+
 	/**
 	 * Test create promotion already exists.
 	 *
@@ -123,6 +123,6 @@ class PromotionControllerTest {
 
 	    mockMvc.perform(mockRequest)
 	    		.andExpect(status().isForbidden());
-	}	
+	}
 
 }

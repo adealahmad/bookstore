@@ -1,6 +1,5 @@
 package ae.gov.sdg.bookstore.controller;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.mockito.ArgumentMatchers.anyDouble;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -28,25 +27,25 @@ import ae.gov.sdg.bookstore.service.CheckoutService;
 
 /**
  * The Class CheckoutControllerTest.
- * 
+ *
  * @author Adeel.Ahmad
  */
 @WebMvcTest(CheckoutController.class)
 @TestPropertySource(locations = "classpath:application-test.properties")
 class CheckoutControllerTest {
-	
+
     /** The mock mvc. */
     @Autowired
     private MockMvc mockMvc;
-    
+
     /** The mapper. */
     @Autowired
-    private ObjectMapper mapper;    
+    private ObjectMapper mapper;
 
     /** The checkout service. */
     @MockBean
     private CheckoutService checkoutService;
-    
+
 	/**
 	 * Test checkout cart.
 	 *

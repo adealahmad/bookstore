@@ -12,6 +12,8 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.TestPropertySource;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import ae.gov.sdg.bookstore.domain.Discount;
 import ae.gov.sdg.bookstore.domain.Promotion;
@@ -22,10 +24,13 @@ import ae.gov.sdg.bookstore.repository.PromotionRepository;
 
 /**
  * The Class DiscountServiceTest.
- * 
+ *
  * @author Adeel.Ahmad
  */
+
+@Testcontainers
 @SpringBootTest
+@TestPropertySource(locations = "classpath:application-test.properties")
 class DiscountServiceTest {
 
 	/** The discount service. */
